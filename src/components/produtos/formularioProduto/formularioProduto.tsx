@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Categoria } from "../../../models/Categoria";
 import { Produto } from "../../../models/Produto";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
-import { Triangle } from "react-loader-spinner";
 
 function FormularioProduto() {
   let navigate = useNavigate();
