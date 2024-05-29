@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Categoria } from "../../../models/Categoria";
 import { Produto } from "../../../models/Produto";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { Triangle } from "react-loader-spinner";
 
 function FormularioProduto() {
   let navigate = useNavigate();
@@ -10,7 +11,7 @@ function FormularioProduto() {
   const { id } = useParams<{ id: string }>();
 
   const [categorias, setCategorias] = useState<Categoria[]>([]);
-  const [categoria, setCategoria] = useState<Categoria | null>(null); // Alterado para categoria ser opcional
+  const [categoria, setCategoria] = useState<Categoria | null>(null);
   const [produto, setProduto] = useState<Produto>({
     id: 0,
     foto: "",
@@ -24,7 +25,19 @@ function FormularioProduto() {
   }
 
   async function buscarCategoriaPorId(id: string) {
-    await buscar(`/categorias/${id}`, setCategoria);
+    try {
+      buscar(`/categorias/${id}`, (categoria: Categoria) => {
+        setCategoria(categoria);
+
+        // Atualizar o estado do produto com a categoria selecionada
+        setProduto({
+          ...produto,
+          categoria: categoria,
+        });
+      });
+    } catch (error) {
+      console.log("Erro ao buscar categoria: ", error);
+    }
   }
 
   async function buscarCategorias() {

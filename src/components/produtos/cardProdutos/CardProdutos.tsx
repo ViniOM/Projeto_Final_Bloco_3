@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Produto } from "../../../models/Produto";
 import { Link } from "react-router-dom";
-import ModalProduto from "../modalProduto/ModalProduto";
 
 interface PropsProduto {
   props: Produto;
 }
 
 function CardProduto({ props }: PropsProduto) {
+  console.log(props);
   const [mostrar, setMostrar] = useState(false);
 
   return (
     <div
-      className="max-w-xs rounded overflow-hidden shadow-lg bg-white transition-transform hover:scale-105 m-8 relative"
+      className="max-w-xs overflow-hidden shadow-lg bg-white transition-transform hover:scale-105 m-8 relative rounded-3xl"
       onMouseEnter={() => setMostrar(true)}
       onMouseLeave={() => setMostrar(false)}
     >
@@ -28,7 +28,8 @@ function CardProduto({ props }: PropsProduto) {
       </div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{props.nome}</div>
-        <p className="text-gray-700 text-base">Preço: R$ {props.preco}</p>
+        <p className="text-gray-700 text-base">R$ {props.preco}</p>
+        <p className="text-gray-700 text-base">{props.categoria?.nome}</p>
       </div>
       <div
         className={`transition-opacity duration-300 ${
