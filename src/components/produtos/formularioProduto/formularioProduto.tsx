@@ -28,7 +28,6 @@ function FormularioProduto() {
       buscar(`/categorias/${id}`, (categoria: Categoria) => {
         setCategoria(categoria);
 
-        // Atualizar o estado do produto com a categoria selecionada
         setProduto({
           ...produto,
           categoria: categoria,
@@ -61,7 +60,7 @@ function FormularioProduto() {
     navigate("/produtos");
   }
 
-  async function gerarNovaPostagem(e: ChangeEvent<HTMLFormElement>) {
+  async function gerarNovoProduto(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
     console.log({ produto });
@@ -86,7 +85,7 @@ function FormularioProduto() {
         {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
       </h1>
 
-      <form onSubmit={gerarNovaPostagem} className="flex flex-col w-1/2 gap-4">
+      <form onSubmit={gerarNovoProduto} className="flex flex-col w-1/2 gap-4">
         <div className="flex flex-col gap-2">
           <label htmlFor="nome">Nome do Produto</label>
           <input
