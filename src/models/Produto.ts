@@ -5,5 +5,5 @@ export interface Produto {
   nome: string;
   preco: number;
   foto: string;
-  categoria: Categoria;
+  categoria: Categoria | null;
 }

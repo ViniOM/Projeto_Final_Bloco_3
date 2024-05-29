@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Produto } from "../../../models/Produto";
-import { Categoria } from "../../../models/Categoria";
+import { Link } from "react-router-dom";
+import ModalProduto from "../modalProduto/ModalProduto";
 
 interface PropsProduto {
   props: Produto;
@@ -34,12 +35,17 @@ function CardProduto({ props }: PropsProduto) {
           mostrar ? "opacity-100" : "opacity-0"
         } absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center`}
       >
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-1">
-          Editar
-        </button>
-        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-          Apagar
-        </button>
+        <Link to={`/editarProduto/${props.id}`}>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-1">
+            Editar
+          </button>
+        </Link>
+
+        <Link to={`/deletarProduto/${props.id}`}>
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Apagar
+          </button>
+        </Link>
       </div>
     </div>
   );
