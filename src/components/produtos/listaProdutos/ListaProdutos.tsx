@@ -1,15 +1,17 @@
+import "./ListaProdutos.css"
 import { useEffect, useState } from "react";
 import { Produto } from "../../../models/Produto";
 import { buscar } from "../../../services/Service";
 import CardProduto from "../cardProdutos/CardProdutos";
 import { Triangle } from "react-loader-spinner";
 import { Link } from "react-router-dom";
+
 function ListaProdutos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   async function listarProdutos() {
     try {
       await buscar("/produtos", setProdutos);
-      console.log(produtos)
+      console.log(produtos);
     } catch (err) {
       alert("Erro ao buscar produtos");
       console.log("Erro ao buscar produtos: ", err);
