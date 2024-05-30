@@ -81,7 +81,7 @@ function FormularioProduto() {
 
   return (
     <div className="container flex flex-col mx-auto items-center">
-      <h1 className="text-4xl text-center my-8">
+      <h1 className="text-4xl text-center my-8 font-semibold">
         {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
       </h1>
 
@@ -145,7 +145,7 @@ function FormularioProduto() {
         <button
           disabled={carregandoCategoria}
           type="submit"
-          className="rounded disabled:bg-slate-200 bg-indigo-400 hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto block py-2 mb-5"
+          className="rounded disabled:bg-slate-200 bg-green-600 hover:bg-green-700 text-white font-bold w-1/2 mx-auto block py-2 mb-5"
         >
           {carregandoCategoria
             ? "Carregando..."
